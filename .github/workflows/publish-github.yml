@@ -28,7 +28,7 @@ jobs:
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Build with Maven
-      run: mvn -B package -DskipTests --file pom.xml
+      run: mvn -B clean deploy -P release -DskipTests -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/chengxiangdong/huaweicloud-sdk-java-v3
 
     - name: Publish to GitHub Packages Apache Maven
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
